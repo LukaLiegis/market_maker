@@ -22,6 +22,7 @@ def ema(arr_in: NDArray, window_size: int, alpha: Optional[float]=0) -> NDArray:
 
     return ewma
 
+@njit
 def ema_weights(window_size: int, reverse: bool = False, alpha: Optional[float]=0) -> NDArray:
     alpha = 3 / float(window_size + 1) if alpha == 0 else alpha
     weights = np.empty(window_size, dtype=np.float64)
