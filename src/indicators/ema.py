@@ -24,6 +24,13 @@ def ema(arr_in: NDArray, window_size: int, alpha: Optional[float]=0) -> NDArray:
 
 @njit
 def ema_weights(window_size: int, reverse: bool = False, alpha: Optional[float]=0) -> NDArray:
+    """
+    Calculates EMA like weights
+    :param window_size: The number of periods to use for calculating the EMA.
+    :param reverse: If true, will reverse the weights.
+    :param alpha: The decay factor for the EMA model.
+    :return: An array of EMA-like weights.
+    """
     alpha = 3 / float(window_size + 1) if alpha == 0 else alpha
     weights = np.empty(window_size, dtype=np.float64)
 
